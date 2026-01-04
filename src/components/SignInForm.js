@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import validate from "../validator/validate";
 import { PAGE } from "../router/routes";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import authenticate from "../auth/authenticate";
 
 const SignInform = () => {
@@ -52,7 +52,7 @@ const SignInform = () => {
   };
 
   return (
-    <div className="bg-black/70 w-full sm:w-[450px] m-auto px-6 md:px-16 py-8 md:py-12 mx-4 sm:mx-auto flex items-center rounded-lg">
+    <div className="bg-black/80 w-full sm:w-[450px] m-auto px-6 md:px-16 py-8 md:py-12 mx-4 sm:mx-auto flex items-center rounded-lg">
       <div className="w-full">
         <h1 className="mb-5 text-white text-3xl">Sign In</h1>
         {authError && (
@@ -127,7 +127,7 @@ const SignInform = () => {
           </div>
         </div>
         <div className="text-md mt-8 flex items-center gap-2">
-          <span className="text-sm">New to NetflixGPT?</span>
+          <span className="text-sm">New to CineMate?</span>
           <Link to={PAGE.SIGNUP} className="text-white text-sm hover:underline">
             Sign up now
           </Link>
