@@ -8,17 +8,16 @@ const SignInform = () => {
   const [loadingBtn, setLoadingBtn] = useState(false);
   const [authError, setAuthError] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
-
   const [emailPhone, setEmailPhone] = useState("test@demo.com");
   const [password, setPassword] = useState("Test@123");
   const navigate = useNavigate();
 
-  const handleEmailPhone = (event) => {
-    setEmailPhone(event.target.value);
+  const handleEmailPhone = (e) => {
+    setEmailPhone(e.target.value);
   };
 
-  const handlePassword = (event) => {
-    setPassword(event.target.value);
+  const handlePassword = (e) => {
+    setPassword(e.target.value);
   };
 
   const handleSignIn = async () => {

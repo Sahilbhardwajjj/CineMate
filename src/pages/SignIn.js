@@ -7,7 +7,7 @@ const SignIn = () => {
       <div className="absolute -z-[1] min-h-screenf h-full">
         <img
           src={POSTER_BG}
-          alt="NetflixGPT"
+          alt="CineMate"
           className="w-screen h-full object-cover"
         />
       </div>

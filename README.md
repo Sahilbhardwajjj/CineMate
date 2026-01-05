@@ -10,6 +10,6 @@
     - Title & Description
   - MovieSuggestions
   - MovieLists \* N
-- NetflixGPT
+- CineMate
   - Search Bar
   - Movie Suggestions
