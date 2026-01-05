@@ -29,21 +29,21 @@ const SignInform = () => {
 
     // Send provided credential to server for validation
     const userCredential = await authenticate(emailPhone, password);
-    let errorMessage = null;
+    let authErrorMessage = null;
     switch (userCredential?.error?.code) {
       case "auth/user-disabled":
-        errorMessage = "Your account has been disabled!";
+        authErrorMessage = "Your account has been disabled!";
         break;
 
       case "auth/invalid-login-credentials":
-        errorMessage = "Invalid login credentials.";
+        authErrorMessage = "Invalid login credentials.";
         break;
 
       default:
-        errorMessage = "Something went wrong with your credentials.";
+        authErrorMessage = "Something went wrong with your credentials.";
         break;
     }
-    setAuthError(errorMessage);
+    setAuthError(authErrorMessage);
     setLoadingBtn(false);
 
     if (userCredential?.error) return;

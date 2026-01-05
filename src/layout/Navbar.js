@@ -96,8 +96,6 @@ const Navbar = () => {
         style={{
           zIndex: 9999999,
           backgroundColor: !isLargeScreen && "rgba(0, 0, 0, 0.5)",
-          // backdropFilter: isLargeScreen ? 'blur(0)' : `blur(${navbarOpacity}px) contrast(60%)`,
-          // WebkitBackdropFilter: isLargeScreen ? 'blur(0)' : `blur(${navbarOpacity}px) contrast(60%)`,
           backgroundImage: isLargeScreen
             ? `linear-gradient(180deg, #141414 ${navbarOpacity}%,transparent)`
             : `url(${BACKDROP})`,

@@ -1,11 +1,11 @@
-import { useState } from 'react';
-import SwiperCore from 'swiper';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/navigation';
+import { useState } from "react";
+import SwiperCore from "swiper";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
 
-import MovieCard, { WithTrending } from './MovieCard';
+import MovieCard, { WithTrending } from "./MovieCard";
 
 SwiperCore.use([Navigation, Pagination]);
 
@@ -14,18 +14,19 @@ const MovieSlider = ({ type, heading, data }) => {
   const TrendingMovieCard = WithTrending(MovieCard);
 
   const handleResize = () => {
-    const slidesInView = Math.floor(window.innerWidth / 144);  // Adjust 200 to your slide width
+    const slidesInView = Math.floor(window.innerWidth / 144); // Adjust 200 to your slide width
     setSlidesPerGroup(slidesInView);
   };
 
-  if (!data) return;
-  const movies = data.results;
+  // Safely access results array. If missing/empty, render nothing to avoid runtime errors.
+  const movies = data?.results ?? [];
+  if (!movies.length) return null;
 
   return (
     <div className="movie-slider mb-8">
-      <h4 className='mb-3 text-[20px] text-[#e5e5e5]'>{heading}</h4>
+      <h4 className="mb-3 text-[20px] text-[#e5e5e5]">{heading}</h4>
       <Swiper
-        slidesPerView={'auto'}
+        slidesPerView={"auto"}
         spaceBetween={16}
         slidesPerGroup={1}
         pagination={{
@@ -36,16 +37,23 @@ const MovieSlider = ({ type, heading, data }) => {
         onResize={handleResize}
         className="mySwiper flex overflow-visibleF"
       >
-        {
-          movies.map((movie, index) => (
-            <SwiperSlide key={movie.id} className={`${type === 'trending' ? 'w-52' : 'w-28 md:w-36'} cursor-pointer flex-grow-0 flex-shrink-0 overflow-hidden rounded`}>
-              {type === 'trending' ? <TrendingMovieCard index={index + 1} data={movie} /> : <MovieCard data={movie} />}
-            </SwiperSlide>)
-          )
-        }
+        {movies.map((movie, index) => (
+          <SwiperSlide
+            key={movie.id}
+            className={`${
+              type === "trending" ? "w-52" : "w-28 md:w-36"
+            } cursor-pointer flex-grow-0 flex-shrink-0 overflow-hidden rounded`}
+          >
+            {type === "trending" ? (
+              <TrendingMovieCard index={index + 1} data={movie} />
+            ) : (
+              <MovieCard data={movie} />
+            )}
+          </SwiperSlide>
+        ))}
       </Swiper>
     </div>
-  )
-}
+  );
+};
 
-export default MovieSlider
+export default MovieSlider;

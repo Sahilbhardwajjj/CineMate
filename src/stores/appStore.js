@@ -19,7 +19,7 @@ const appStore = configureStore({
     showCase: showCaseReducer,
     player: playerReducer,
   },
-  devTools: true
+  devTools: true,
 });
 
 export default appStore;
